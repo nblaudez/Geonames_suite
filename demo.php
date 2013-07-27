@@ -39,7 +39,7 @@ Kint::dump($cities_admin2_result);
 $countries_list_result=$geonames->retrieveCountryList();
 Kint::dump($countries_list_result);
 
-// retrieve all countries
+// retrieve country details
 $country_details_result=$geonames->retrieveCountryInformations("fr");
 Kint::dump($country_details_result);
 

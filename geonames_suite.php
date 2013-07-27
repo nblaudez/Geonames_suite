@@ -52,13 +52,13 @@ class Geonames_Suite {
 	}
 
 	/**
-	 * This methods permits to retrieves geoname place informations.
+	 * This method permits to retrieve geonames place informations.
 	 *
 	 * @param $string sring characters used to search cities. City name must start by this characters
 	 * @param $country_code string ISO_ALPHA2 code of country of city. indicate 'all' for search in all countries
 	 * @param $language_iso_code string ISO_ALPHA2 code of country of language used to make query
 	 * 		  		(Ex: if you specifiy 'it' as language_iso_code you can find 'Paris' city with the keyword 'Parigi'.
-	 * 				Informations are returned in language of language_iso_code if alternatesnames founds for thus geonameid.
+	 * 				Informations are returned in language of language_iso_code if alternatesnames found for this geonameid.
 	 *
 	 * @return mixed An array of geoname place informations.
 	 */

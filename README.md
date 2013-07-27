@@ -1,9 +1,9 @@
 Geonames suite
 ---------------
 
-Geonames_suite is PHP library which permits to manipulate geoname database.
+Geonames_suite is PHP library which permits to manipulate geonames database.
 
-At this instant geoname_suite permits to :
+At this instant geonames_suite permits to :
 
   - Retrieve localized city informations by different ways :
 
@@ -20,11 +20,11 @@ At this instant geoname_suite permits to :
 Installation
 =============
 
-Geoname database
+Geonames database
 -------------
 
-You need to set up a geoname database on a Mysql server.
-In this way i suggest you to use "GeoNames-MySQL-DataImport" a git project which download and set up the geoname database.
+You need to set up a geonames database on a Mysql server.
+In this way i suggest you to use "GeoNames-MySQL-DataImport" a git project which download and set up the geonames database.
 
 You can clone it here : https://github.com/codigofuerte/GeoNames-MySQL-DataImport
 

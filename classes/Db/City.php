@@ -10,7 +10,7 @@ class Geonames_Suite_Db_City {
 	
 	
 	/**
-	 * This methods permits to retrieves cities which starts by characters passed by argument.
+	 * This method permits to retrieve cities which starts by characters passed by argument.
 	 * 
 	 * @param $string string characters used to search cities. City name must start by this characters
 	 * @param $country_code string ISO_ALPHA2 code of country of city. indicate 'all' for search in all countries
@@ -115,7 +115,7 @@ class Geonames_Suite_Db_City {
 	}
 	
 	/**
-	 * This methods permits to retrieves cities of ADM1 zone.
+	 * This method permits to retrieve cities of ADM1 zone.
 	 *
 	 * @param $admin1_code string code of admin1 zone
 	 * @param $country_code string ISO_ALPHA2 code of country of city. indicate 'all' for search in all countries
@@ -165,7 +165,7 @@ class Geonames_Suite_Db_City {
 	
 	
 	/**
-	 * This methods permits to retrieves cities of ADM2 zone.
+	 * This method permits to retrieve cities of ADM2 zone.
 	 *
 	 * @param $admin1_code string code of admin1 zone
 	 * @param $admin2_code string code of admin2 zone

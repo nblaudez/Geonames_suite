@@ -9,7 +9,7 @@ class Geonames_Suite_Db_Admin1 {
 	
 	
 	/**
-	 * This methods permits to retrieves admin1 zones list for a country.
+	 * This method permits to retrieve admin1 zones list for a country.
 	 * 
 	 * @param $country_code string ISO_ALPHA2 code of country of city. indicate 'all' for search in all countries
 	 * @param $language_iso_code string ISO_ALPHA2 code of country of language used to make query (Ex: if you specifiy IT as language_iso_code you
