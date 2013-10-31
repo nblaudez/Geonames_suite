@@ -20,7 +20,7 @@ class Geonames_Suite {
 			
 			if($class !="." && $class !="..") {
 				
-				include(__DIR__."/classes/Db/".$class);
+				include_once(__DIR__."/classes/Db/".$class);
 				
 				$class_name="Geonames_Suite_Db_".substr($class,0,strlen($class)-4);
 				$this->_methods[$class_name]=get_class_methods($class_name);
@@ -115,6 +115,7 @@ class Geonames_Suite {
 		 
 		) as admin1_id,
 	
+		geoname.admin1 as admin1_code,
 			
 		(
 			SELECT geoname1.geonameid
@@ -192,8 +193,9 @@ class Geonames_Suite {
 					AND geoname6.admin2 = geoname.admin2
 				LIMIT 1
 			)
-		) as admin2_name
+		) as admin2_name,
 			
+		geoname.admin2 as admin2_code
 	
 		FROM geoname,countryinfo
 			
@@ -207,7 +209,7 @@ class Geonames_Suite {
 	
 		return $stmt->fetchAll(PDO::FETCH_ASSOC);
 	
-	}	
+	}
 	
 }
 ?>

@@ -20,14 +20,20 @@ class Geonames_Suite_Db_Admin2 {
 	 */
 public function retrieveAdmin2($admin1_code,$country_code,$language_iso_code="en") {
 		
-
-		if(!preg_match('#^[a-zA-Z0-9]{1,7}$#',$admin1_code))			
+		$language_iso_code=strtolower($language_iso_code);
+		$country_code=strtolower($country_code);
+		$admin1_code=strtolower($admin1_code);
+		
+		if(!preg_match('#^[0-9a-z]{1,7}$#',$admin1_code))			
 			return false;
-		if(!preg_match('#^[a-zA-Z]{2}$#',$country_code))
+		if(!preg_match('#^[a-z]{2}$#',$country_code))
 			return false;
-		if(!preg_match('#^[a-zA-Z]{2}$#',$language_iso_code))
+		if(!preg_match('#^[a-z]{2}$#',$language_iso_code))
 			return false;
 				
+		
+
+		
 		$query="SELECT DISTINCT
 				geoname.geonameid, 
 				geoname.country,
@@ -50,13 +56,19 @@ public function retrieveAdmin2($admin1_code,$country_code,$language_iso_code="en
 				geoname.population
 				
 				FROM geoname
-				WHERE
-					geoname.country='$country_code'					
-					AND geoname.admin1='$admin1_code'
-					AND geoname.fcode like 'ADM2'
-				ORDER by name					
-		";
-
+				WHERE";
+		
+				if($country_code!="all")
+					$query.=" geoname.country='$country_code'";
+				if($country_code!="all" && $admin1_code!="all")					
+					$query.=" AND geoname.admin1='$admin1_code'";
+				elseif($country_code=="all" && $admin1_code!="all")
+					$query.=" geoname.admin1='$admin1_code'";
+					
+				$query.=" AND geoname.fcode like 'ADM2'
+				ORDER by name";
+					
+				
 		$stmt=$this->_db->query($query);
 
 

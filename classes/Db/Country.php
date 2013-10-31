@@ -59,18 +59,30 @@ class Geonames_Suite_Db_Country {
 	 *	 
 	 */
 	
-	public function retrieveCountryList() {
+	public function retrieveCountryList($language_iso_code="gb") {
 	
-		$query="SELECT DISTINCT
-		countryinfo.iso_alpha2,
-		countryinfo.iso_alpha3,
-		countryinfo.name,
-		countryinfo.capital
-		FROM countryinfo
+		$query="SELECT 
+                    DISTINCT countryinfo.iso_alpha2, 
+                    countryinfo.iso_alpha3, 
+                    COALESCE( 
+                        ( SELECT alternatename.alternateName FROM alternatename
+                            WHERE alternatename.geonameid=countryinfo.geonameId 
+                            AND alternatename.isoLanguage='$language_iso_code' 
+                            ORDER by alternatename.isPreferredName 
+                            DESC LIMIT 1	 
+                        ) , 
+                        (SELECT countryinfo.name 
+                            FROM countryinfo ci2 
+                            WHERE ci2.geonameId=countryinfo.geonameId LIMIT 1
+                        ) 
+                    ) 
+                    as name, 
+                    countryinfo.capital 
+                    FROM countryinfo 
 		";
-	
-		$stmt=$this->_db->query($query);
-	
+		$this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $stmt=$this->_db->query($query);
+
 		return $stmt->fetchAll(PDO::FETCH_ASSOC);
 	}	
 }

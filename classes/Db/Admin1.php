@@ -19,10 +19,12 @@ class Geonames_Suite_Db_Admin1 {
 	 */
 public function retrieveAdmin1($country_code,$language_iso_code="en") {
 		
+		$country_code=strtolower($country_code);
+		$language_iso_code=strtolower($language_iso_code);
 
-		if(!preg_match('#^[a-zA-Z]{2}$#',$country_code))
+		if(!preg_match('#^[a-z]{2}$#',$country_code))
 			return false;
-		if(!preg_match('#^[a-zA-Z]{2}$#',$language_iso_code))
+		if(!preg_match('#^[a-z]{2}$#',$language_iso_code))
 			return false;
 				
 		$query="SELECT DISTINCT
@@ -47,7 +49,7 @@ public function retrieveAdmin1($country_code,$language_iso_code="en") {
 				
 				FROM geoname
 				WHERE
-					geoname.country='$country_code'					
+					lower(geoname.country)='$country_code'					
 					AND geoname.fcode like 'ADM1'
 				ORDER by name					
 		";
